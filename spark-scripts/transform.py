@@ -3,17 +3,10 @@ from pyspark.sql.functions import col, trim, regexp_replace, when, lit
 from pyspark.sql.types import FloatType, TimestampType
 
 def transform_data(input_dir, output_dir):
-    """
-    Fungsi untuk melakukan transformasi data dari Parquet ke format sesuai schema.
-    
-    :param input_dir: Path folder input berisi file Parquet.
-    :param output_dir: Path folder output untuk file Parquet hasil transformasi.
-    """
     # Inisialisasi SparkSession
     spark = SparkSession.builder.appName("Data Transformation").getOrCreate()
 
     try:
-        # Load datasets
         orders = spark.read.parquet(f"{input_dir}/olist_orders_dataset.parquet")
         products = spark.read.parquet(f"{input_dir}/olist_products_dataset.parquet")
         customers = spark.read.parquet(f"{input_dir}/olist_customers_dataset.parquet")
@@ -61,7 +54,6 @@ def transform_data(input_dir, output_dir):
         )
         dim_customers.write.mode("overwrite").parquet(f"{output_dir}/dim_customers")
 
-        # Print statistik dasar
         print("Transformasi berhasil:")
         print("Schema fact_orders:")
         fact_orders.printSchema()
@@ -79,7 +71,6 @@ def transform_data(input_dir, output_dir):
         print(f"Terjadi kesalahan dalam transformasi: {str(e)}")
 
     finally:
-        # Tutup SparkSession
         spark.stop()
 
 if __name__ == "__main__":
