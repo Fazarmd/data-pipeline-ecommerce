@@ -38,8 +38,8 @@ Proyek ini menggunakan pendekatan **batch processing**, di mana data diproses se
 ### 1. Clone Repository
 Clone repository ke komputer lokal Anda:
 ```bash
-git clone <repository-url>
-cd <repository-folder>
+git clone https://github.com/Fazarmd/data-pipeline-ecommerce.git
+cd data-pipeline-ecommerce
 ```
 
 ### 2. Jalankan PostgreSQL
@@ -76,7 +76,7 @@ make metabase
 ```
 **Fungsi**:
 1. Menghubungkan ke database PostgreSQL untuk menampilkan data dalam bentuk dashboard.
-2. Memberikan insight bisnis melalui visualisasi data seperti pie chart, line chart, dan lainnya.
+2. Memberikan insight bisnis melalui visualisasi data seperti line chart dan lainnya.
 
 ---
 
